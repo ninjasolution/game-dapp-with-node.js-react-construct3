@@ -115,7 +115,7 @@ contract Ownable {
     }
 }
 
-contract Betting is Ownable {
+contract Votting is Ownable {
 
     address public token;
 
@@ -145,7 +145,7 @@ contract Betting is Ownable {
         depositCount[msg.sender] += 1;
     }
 
-    function withdraw(address to, uint256 amount) public payable onlyOwner {
+    function withdraw(address to, uint256 amount) public onlyOwner {
         amount = amount*(10** ERC20(token).decimals());
         ERC20(token).approve(address(this), amount);
         ERC20(token).transferFrom(address(this), to, amount);
@@ -200,10 +200,12 @@ contract Betting is Ownable {
             }
         }
 
+        for(uint256 i=0 ; i<records.length ; i++) {
+            delete depositCount[records[i].player];
+            delete recordCount[records[i].player];
+        }
         delete winners;
         delete records;
-        delete depositCount = new mapping(address => )
-        delete recordCount;
         bestScore = 0;
         return true;
     }

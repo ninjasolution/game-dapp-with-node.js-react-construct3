@@ -44,7 +44,7 @@ export default function GamePage() {
               },
             }}
             >
-            <iframe src="http://localhost:8080"  style={{overflow: "hidden", height: "100%", width: "100%", position: "absolute"}}></iframe>
+            <iframe src="http://localhost:8080" title='game' style={{overflow: "hidden", height: "100%", width: "100%", position: "absolute"}}></iframe>
           </LoadingOverlay>
         </div>
     )
