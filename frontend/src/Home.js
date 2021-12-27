@@ -25,7 +25,9 @@ export default function Home() {
     const [isActive, setIsActive] = useState(false);
     const [copyButtonText, setCopyButtonText] = useState('Copy to clipboard')
     const [clipBoard, setClipBoard] = useState('')
-
+    const [ todayBestScore, setTodayBestScore ] = useState(0);
+    const [ yourBestScore, setYourBestScore ] = useState(0);
+    const [ yourScores, setYourScores ] = useState([]);
     useEffect(() => {
   
       window.ethereum.enable().then((res)=> {
@@ -37,15 +39,32 @@ export default function Home() {
     }, [])
   
     const  onConnect = async () => {
-      window.contract = new web3.eth.Contract(contractABI, contractADDRESS);
-      window.balance = await window.contract.methods.balanceOf(window.account).call();
 
+      try {
+        window.contract = new web3.eth.Contract(contractABI, contractADDRESS);
+        window.balance = await window.contract.methods.balanceOf(window.account).call();
+        const bestScore = await window.contract.methods.getBestScore().call();
+        setTodayBestScore(bestScore);
+        const scores = await window.contract.methods.getScores(window.account).call();
+        console.log(scores)
+        setYourScores(scores);
+        const yourBestScore = scores.reduce((memo, item) => {
+                  if(memo < item){
+                    memo = item
+                  }
+                  return memo;
+                }, 0)
+        setYourBestScore(yourBestScore);
+
+        console.log(bestScore, scores)
       if(window.balance < 10*Math.pow(10, 18)) {
         swal("Oops", "Please check your balance or network.", "error");
         return;
       }
       setStartIsDisable(false)
-      console.log(window.balance)
+      } catch (error) {
+        swal("Oops", "Please check your balance or network.", "error");
+      }
     }
     
     const onGameStart = async () => {
@@ -148,7 +167,6 @@ export default function Home() {
                
                 
                 <Button
-                  
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
@@ -157,7 +175,35 @@ export default function Home() {
                 >
                   Start Game
                 </Button>
-
+                <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                  disabled={startIsDisable}
+                >
+                  Today best score: { todayBestScore }
+                </Button>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                  disabled={startIsDisable}
+                >
+                  Your best score: { yourBestScore }
+                </Button>
+                
+                {
+                  yourScores.map(s => 
+                    <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                  disabled={startIsDisable}
+                >
+                  {s}
+                </Button>)
+                }
+                
               </Box>
             </Grid>
           </Grid>

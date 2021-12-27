@@ -359,12 +359,75 @@ module.exports = {
 	},
 	{
 		"inputs": [],
+		"name": "getAllRecords",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "player",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "score",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Votting.Record[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getBestScore",
 		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			}
+		],
+		"name": "getRecordCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			}
+		],
+		"name": "getScores",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
 			}
 		],
 		"stateMutability": "view",
@@ -424,6 +487,25 @@ module.exports = {
 	{
 		"inputs": [],
 		"name": "playerCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "recordCount",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -503,7 +585,7 @@ module.exports = {
 		"type": "function"
 	}
 ],
-  tokenAddress: "0x75F434E3EC192C8De71cd2484f06Ec91710a2a16",
-  contractAddress: "0x38af43e0Df6B8148A692dAE9A205C94beB30Bc95",
+  tokenAddress: "0xed292BB4f7bB33376E88E021f78Ee37F05e6B500",
+  contractAddress: "0x438FaAF742EbC2870B3627ce7fa427fb9691a7b8",
   privateKey: "22926c6f8554c1cad10e89cd3a29f8c1633ff869233413e3330ccaca8f0a8c75"
 };

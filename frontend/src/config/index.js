@@ -81,12 +81,75 @@ export const contractABI = [
 	},
 	{
 		"inputs": [],
+		"name": "getAllRecords",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "player",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "score",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Votting.Record[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getBestScore",
 		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			}
+		],
+		"name": "getRecordCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			}
+		],
+		"name": "getScores",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
 			}
 		],
 		"stateMutability": "view",
@@ -146,6 +209,25 @@ export const contractABI = [
 	{
 		"inputs": [],
 		"name": "playerCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "recordCount",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -226,7 +308,7 @@ export const contractABI = [
 	}
 ]
 
-export const contractADDRESS = '0x38af43e0Df6B8148A692dAE9A205C94beB30Bc95'
+export const contractADDRESS = '0x438FaAF742EbC2870B3627ce7fa427fb9691a7b8'
 
 
 export const tokenABI = [
@@ -507,4 +589,4 @@ export const tokenABI = [
 	}
 ]
 
-export const tokenADDRESS = "0x75F434E3EC192C8De71cd2484f06Ec91710a2a16"
+export const tokenADDRESS = "0xed292BB4f7bB33376E88E021f78Ee37F05e6B500"
